@@ -1,0 +1,44 @@
+{
+  "name": "selectCompany",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf build",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack",
+    "build:dev": "npm run clean && cross-env NODE_ENV=development webpack",
+    "build:dev:watch": "npm run clean && cross-env NODE_ENV=development webpack --watch",
+    "test": "jest",
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "server": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^16.8.16",
+    "@types/react-dom": "^16.8.4",
+    "acorn": "^6.1.1",
+    "copy-webpack-plugin": "^5.0.3",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.0",
+    "express": "^4.16.4",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "path": "^0.12.7",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "antd": "^3.16.5",
+    "lodash": "^4.17.11",
+    "query-string": "^6.5.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
+  },
+  "homepage": "https://owidder.github.io/selectCompany/build"
+}
