@@ -9,4 +9,8 @@ const handleSelect = (short: string) => {
     document.getElementById("short").innerHTML = short;
 }
 
-ReactDOM.render(<SelectCompany onChange={(short => handleSelect(short))}/>, document.getElementById("select"));
+const scriptPath = document.currentScript.getAttribute("src");
+const parts = scriptPath.split("/");
+const basedir = parts.slice(0, parts.length-1).join("/");
+
+ReactDOM.render(<SelectCompany basedir={basedir} onChange={(short => handleSelect(short))}/>, document.getElementById("select"));

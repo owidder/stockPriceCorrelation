@@ -5,6 +5,7 @@ import {AutoComplete} from "antd";
 interface SelectSymbolProps {
     initialShort?: string;
     onChange: (symbol: string)  => void;
+    basedir: string;
 }
 
 export interface Symbol {
@@ -16,11 +17,6 @@ interface SelectSymbolState {
     symbols: Symbol[];
     data: string[];
     value?: string;
-}
-
-const getSymbols = async (): Promise<Symbol[]> => {
-    const symbols = await fetch("./service/symbols").then(resp => resp.json());
-    return symbols;
 }
 
 export class SelectCompany extends React.Component<SelectSymbolProps, SelectSymbolState> {
@@ -38,8 +34,13 @@ export class SelectCompany extends React.Component<SelectSymbolProps, SelectSymb
         this.setState({value: full})
     }
 
+    async getSymbols(): Promise<Symbol[]> {
+        const symbols = await fetch(`${this.props.basedir}/../../service/symbols`).then(resp => resp.json());
+        return symbols;
+    }
+
     async componentDidMount() {
-        const symbols = await getSymbols();
+        const symbols = await this.getSymbols();
         this.setState({symbols});
         if(this.props.initialShort) {
             const value = this.state.symbols.find(s => (s.short == this.props.initialShort)).full;
