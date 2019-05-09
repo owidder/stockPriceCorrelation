@@ -7,6 +7,7 @@ import {initScatterPlot, DrawFunction} from "./stockPricesScatterPlot";
 interface CorrelationProps {
     symbolX: string;
     symbolY: string;
+    basedir: string;
 }
 
 interface CorrelationState {
@@ -14,11 +15,6 @@ interface CorrelationState {
     height: number;
     pricesX: EndOfDayPrice[];
     pricesY: EndOfDayPrice[];
-}
-
-const loadData = async (symbol: string): Promise<EndOfDayPrice[]> => {
-    const response = await fetch(`./service/${symbol}`);
-    return await response.json();
 }
 
 export class CompanyCorrelation extends React.Component<CorrelationProps, CorrelationState> {
@@ -37,13 +33,18 @@ export class CompanyCorrelation extends React.Component<CorrelationProps, Correl
         })
     }
 
+    async loadData(symbol: string): Promise<EndOfDayPrice[]> {
+        const response = await fetch(`${this.props.basedir}/../../service/${symbol}`);
+        return await response.json();
+    }
+
     async componentDidUpdate(prevProps: CorrelationProps, prevState: CorrelationState) {
         if(this.state.pricesX.length == 0 || (this.props.symbolX !== prevProps.symbolX)) {
-            const pricesX  = await loadData(this.props.symbolX);
+            const pricesX  = await this.loadData(this.props.symbolX);
             this.setState({pricesX});
         }
         if(this.state.pricesY.length == 0 || (this.props.symbolY !== prevProps.symbolY)) {
-            const pricesY  = await loadData(this.props.symbolY);
+            const pricesY  = await this.loadData(this.props.symbolY);
             this.setState({pricesY});
         }
         if(this.state.width !== prevState.width || this.state.height !== prevState.height) {
