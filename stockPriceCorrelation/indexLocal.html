@@ -4,42 +4,17 @@
     <meta charset="UTF-8">
     <title>Stock Price Correlations</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.17.0/antd.css">
+    <link rel="stylesheet" href="/stockPriceCorrelation/css/antd.css">
 
     <script src="/selectCompany/build/dist/js/selectCompanyElement.0.1.0.js"></script>
     <script src="/companyCorrelation/build/dist/js/companyCorrelationElement.0.1.0.js"></script>
     <script src="./getHashParams.js"></script>
-
-    <style>
-        .container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .row {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <select-company id="selectCompany1"/>
-        <select-company id="selectCompany2"/>
-    </div>
-    <div class="row">
-        <company-correlation id="companyCorrelation"/>
-    </div>
-</div>
+<select-company id="selectCompany1"/>
+<select-company id="selectCompany2"/>
+<company-correlation id="companyCorrelation"/>
 
 <script>
     (function () {
