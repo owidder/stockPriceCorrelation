@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
     <title>Stock Price Correlations</title>
 
+    <link rel="stylesheet" href="/stockPriceCorrelation/css/antd.css">
+
     <script src="/selectCompany/build/dist/js/selectCompanyElement.0.1.0.js"></script>
-    <script src="/drawCompanyCorrelation/build/dist/js/companyCorrelationElement.0.1.0.js"></script>
+    <script src="/companyCorrelation/build/dist/js/companyCorrelationElement.0.1.0.js"></script>
+    <script src="./getHashParams.js"></script>
 </head>
 <body>
 
 <select-company id="selectCompany1"/>
 <select-company id="selectCompany2"/>
-
+<company-correlation id="companyCorrelation"/>
 
 <script>
     (function () {
+        const params = getHashParams();
 
+        function onChangeCompany1(symbol) {
+            document.getElementById("companyCorrelation").setAttribute("symbol-x", symbol)
+            console.log(document.getElementById("companyCorrelation").getAttribute("symbol-x"))
+        }
+
+        function onChangeCompany2(symbol) {
+            document.getElementById("companyCorrelation").setAttribute("symbol-y", symbol)
+            console.log(document.getElementById("companyCorrelation").getAttribute("symbol-y"))
+        }
+
+        document.getElementById("selectCompany1").onChangeCompany = onChangeCompany1;
+        document.getElementById("selectCompany1").setAttribute("initial-short", params.symbolX);
+
+        document.getElementById("selectCompany2").onChangeCompany = onChangeCompany2;
+        document.getElementById("selectCompany2").setAttribute("initial-short", params.symbolY);
     })()
 </script>
 

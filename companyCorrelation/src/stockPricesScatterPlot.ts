@@ -218,22 +218,24 @@ export const initScatterPlot = (_svg: SVGSVGElement): DrawFunction => {
         .attr("class", "label xlabel")
 
     const drawScatterPlot: DrawFunction = (symbolX: string, symbolY: string, pricesX: EndOfDayPrice[], pricesY: EndOfDayPrice[]) => {
-        const datesX = projection(pricesX, "date");
-        const datesY = projection(pricesY, "date");
-        const commonDates = _.intersection(datesX, datesY);
+        if(pricesX && pricesX.length > 0 && pricesY && pricesX.length > 0) {
+            const datesX = projection(pricesX, "date");
+            const datesY = projection(pricesY, "date");
+            const commonDates = _.intersection(datesX, datesY);
 
-        const plotData: Dot[] = commonDates.map((date, i) => {
-            const xValue = priceForDate(pricesX, date);
-            const yValue = priceForDate(pricesY, date);
-            return {
-                date: date,
-                x: Number(xValue),
-                y: Number(yValue),
-                id: i
-            }
-        })
+            const plotData: Dot[] = commonDates.map((date, i) => {
+                const xValue = priceForDate(pricesX, date);
+                const yValue = priceForDate(pricesY, date);
+                return {
+                    date: date,
+                    x: Number(xValue),
+                    y: Number(yValue),
+                    id: i
+                }
+            })
 
-        draw(plotData, symbolX, symbolY);
+            draw(plotData, symbolX, symbolY);
+        }
     }
 
     return drawScatterPlot;
