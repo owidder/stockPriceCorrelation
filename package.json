@@ -4,9 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "server": "node server.js"
+    "server": "node server.js",
+    "build:all": "cd companyCorrelation && npm run build && cd ../selectCompany && npm run build"
   },
   "repository": {
     "type": "git",
