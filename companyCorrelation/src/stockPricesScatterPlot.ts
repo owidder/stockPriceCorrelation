@@ -218,7 +218,7 @@ export const initScatterPlot = (_svg: SVGSVGElement): DrawFunction => {
         .attr("class", "label xlabel")
 
     const drawScatterPlot: DrawFunction = (symbolX: string, symbolY: string, pricesX: EndOfDayPrice[], pricesY: EndOfDayPrice[]) => {
-        if(pricesX && pricesX.length > 0 && pricesY && pricesX.length > 0) {
+        if(pricesX && pricesX.length > 0 && pricesY && pricesY.length > 0) {
             const datesX = projection(pricesX, "date");
             const datesY = projection(pricesY, "date");
             const commonDates = _.intersection(datesX, datesY);

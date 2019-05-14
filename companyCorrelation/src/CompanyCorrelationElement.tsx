@@ -27,9 +27,10 @@ class CompanyCorrelationElement extends HTMLElement {
             symbolY={this.getAttribute("symbol-y")}/>, this);
     }
 
-    attributeChangedCallback() {
-        console.log("attributeChangedCallback");
+    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
         this.drawReactComponent();
+        if(newValue && oldValue != newValue) {
+        }
     }
 
     connectedCallback() {
