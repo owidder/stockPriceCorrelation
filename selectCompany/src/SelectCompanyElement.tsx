@@ -34,9 +34,10 @@ class SelectCompanyElement extends HTMLElement {
         this.drawReactComponent();
     }
 
-    attributeChangedCallback() {
-        console.log("attributeChangedCallback");
-        this.drawReactComponent();
+    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+        if(newValue && oldValue != newValue) {
+            this.drawReactComponent();
+        }
     }
 }
 
