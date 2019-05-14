@@ -43,9 +43,11 @@ export class SelectCompany extends React.Component<SelectSymbolProps, SelectSymb
         const symbols = await this.getSymbols();
         this.setState({symbols});
         if(this.props.initialShort) {
-            const value = this.state.symbols.find(s => (s.short == this.props.initialShort)).full;
-            this.setState({value});
-            this.props.onChange(this.props.initialShort);
+            const symbolObj = this.state.symbols.find(s => (s.short == this.props.initialShort));
+            if(symbolObj) {
+                this.setState({value: symbolObj.full});
+                this.props.onChange(this.props.initialShort);
+            }
         }
     }
 

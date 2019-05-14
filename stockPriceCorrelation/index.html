@@ -21,23 +21,29 @@
             flex-direction: column;
         }
 
+        company-correlation {
+            width: 100%;
+        }
+
         .row {
             display: flex;
             flex-direction: row;
             width: 100%;
+            justify-content: space-between;
         }
 
         .row.full {
             height: 100%;
         }
+
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="row">
-        <select-company id="selectCompany1"></select-company>
-        <select-company id="selectCompany2"></select-company>
+        <div><small>Company Y</small><select-company id="selectCompany1"></select-company></div>
+        <div><small>Company X</small><select-company id="selectCompany2"></select-company></div>
     </div>
     <div class="row full">
         <company-correlation id="companyCorrelation"></company-correlation>
@@ -48,14 +54,17 @@
     (function () {
         const params = getHashParams();
 
+        var symbolX, symbolY;
         function onChangeCompany1(symbol) {
-            document.getElementById("companyCorrelation").setAttribute("symbol-x", symbol)
-            console.log(document.getElementById("companyCorrelation").getAttribute("symbol-x"))
+            document.getElementById("companyCorrelation").setAttribute("symbol-y", symbol);
+            symbolY = symbol;
+            setHashParams(symbolX, symbolY);
         }
 
         function onChangeCompany2(symbol) {
-            document.getElementById("companyCorrelation").setAttribute("symbol-y", symbol)
-            console.log(document.getElementById("companyCorrelation").getAttribute("symbol-y"))
+            document.getElementById("companyCorrelation").setAttribute("symbol-x", symbol)
+            symbolX = symbol;
+            setHashParams(symbolX, symbolY);
         }
 
         document.getElementById("selectCompany1").onChangeCompany = onChangeCompany1;

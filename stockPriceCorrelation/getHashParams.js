@@ -12,3 +12,19 @@ function getHashParams() {
 
     return {}
 }
+
+function setHashParam(name, value) {
+    const params = getHashParams();
+    params[name] = value;
+}
+
+function setHashParams(params) {
+    var paramsString = "";
+    Object.getOwnPropertyNames(params).forEach(function (name) {
+
+    })
+    if(symbolX && symbolY) {
+        const hash = "symbolX=" + symbolX + "&" + "symbolY=" + symbolY;
+        window.location.hash = hash;
+    }
+}
