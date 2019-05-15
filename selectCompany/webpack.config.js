@@ -64,6 +64,13 @@ const testPages = {
             chunks: ["selectCompanyElement", "componentTestPage"],
             chunksSortMode: "manual"
         }),
+        new HtmlWebpackPlugin({
+            filename: "company.html",
+            inject: "head",
+            template: "./src/selectCompanyTemplate.html",
+            chunks: ["selectCompanyElement"],
+            chunksSortMode: "manual"
+        }),
     ]
 }
 
