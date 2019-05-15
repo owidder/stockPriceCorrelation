@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company</title>
+
+    <link rel="stylesheet" href="css/antd.css">
+<script type="text/javascript" src="static/js/selectCompanyElement.77fd9bf8.js"></script></head>
+
+<style>
+    body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<body>
+
+<h1>Company</h1>
+<select-company initial-short="AAPL"></select-company>
+<div id="symbol"></div>
+
+<script>
+    (function () {
+        var element = document.querySelector("select-company");
+        element.onChangeCompany = function (symbol) {
+            var symbolDiv = document.querySelector("div#symbol");
+            symbolDiv.innerHTML = "Symbol = " + symbol;
+        }
+    })()
+</script>
+
+</body>
+</html>
