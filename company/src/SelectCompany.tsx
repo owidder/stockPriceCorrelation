@@ -35,7 +35,7 @@ export class SelectCompany extends React.Component<SelectSymbolProps, SelectSymb
     }
 
     async getSymbols(): Promise<Symbol[]> {
-        const symbols = await fetch(`${this.props.basedir}/../../service/symbols`).then(resp => resp.json());
+        const symbols = await fetch(`${this.props.basedir}/../../service/companies`).then(resp => resp.json());
         return symbols;
     }
 
