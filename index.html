@@ -21,8 +21,12 @@
             flex-direction: column;
         }
 
-        company-correlation {
-            width: 100%;
+        .left {
+            margin-left: 1em;
+        }
+
+        .right {
+            margin-right: 1em;
         }
 
         .row {
@@ -32,7 +36,11 @@
             justify-content: space-between;
         }
 
-        .row.full {
+        .fullwidth {
+            width: 100%;
+        }
+
+        .fullheight {
             height: 100%;
         }
 
@@ -42,11 +50,11 @@
 
 <div class="container">
     <div class="row">
-        <div><small>Company Y</small><select-company id="selectCompany1"></select-company></div>
-        <div><small>Company X</small><select-company id="selectCompany2"></select-company></div>
+        <div class="left"><small>Company Y</small><select-company id="selectCompany1"></select-company></div>
+        <div class="right"><small>Company X</small><select-company id="selectCompany2"></select-company></div>
     </div>
-    <div class="row full">
-        <company-correlation id="companyCorrelation"></company-correlation>
+    <div class="row fullheight">
+        <div class="fullwidth"><company-correlation id="companyCorrelation"></company-correlation></div>
     </div>
 </div>
 
