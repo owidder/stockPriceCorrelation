@@ -61,30 +61,30 @@
 <script>
     (function () {
         var params = getHashParams();
-        var symbolX = params.symbolX;
-        var symbolY = params.symbolY;
+        var shortX = params.shortX;
+        var shortY = params.shortY;
 
         function _set() {
-            setHashParams({symbolX: symbolX, symbolY: symbolY});
+            setHashParams({shortX: shortX, shortY: shortY});
         }
 
-        function onChangeCompany1(symbol) {
-            document.getElementById("companyCorrelation").setAttribute("symbol-y", symbol);
-            symbolY = symbol;
+        function onChangeCompany1(company) {
+            document.getElementById("companyCorrelation").setAttribute("symbol-y", company.short);
+            shortY = company.short;
             _set();
         }
 
-        function onChangeCompany2(symbol) {
-            document.getElementById("companyCorrelation").setAttribute("symbol-x", symbol)
-            symbolX = symbol;
+        function onChangeCompany2(company) {
+            document.getElementById("companyCorrelation").setAttribute("symbol-x", company.short)
+            shortX = company.short;
             _set();
         }
 
         document.getElementById("selectCompany1").onChangeCompany = onChangeCompany1;
-        document.getElementById("selectCompany1").setAttribute("initial-short", symbolY);
+        document.getElementById("selectCompany1").setAttribute("initial-short", shortY);
 
         document.getElementById("selectCompany2").onChangeCompany = onChangeCompany2;
-        document.getElementById("selectCompany2").setAttribute("initial-short", symbolX);
+        document.getElementById("selectCompany2").setAttribute("initial-short", shortX);
     })()
 </script>
 
