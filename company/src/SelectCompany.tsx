@@ -10,39 +10,32 @@ export interface Company {
 interface SelectCompanyProps {
     initialShort?: string;
     onChange: (company: Company)  => void;
-    basedir: string;
+    companies: Company[];
 }
 
 interface SelectCompanyState {
-    companies: Company[];
-    data: string[];
+    filteredCompanyNames: string[];
     value?: string;
 }
 
 export class SelectCompany extends React.Component<SelectCompanyProps, SelectCompanyState> {
 
-    readonly state: SelectCompanyState = {data: [], companies: []};
+    readonly state: SelectCompanyState = {filteredCompanyNames: []};
 
     handleSearch(value: string) {
-        const data = _.uniq(this.state.companies.map(company => company.full).filter(full => full.toLowerCase().indexOf(value.toLowerCase()) > -1));
-        this.setState({data, value})
+        const filteredCompanyNames = _.uniq(this.props.companies.map(company => company.full).filter(full => full.toLowerCase().indexOf(value.toLowerCase()) > -1));
+        this.setState({filteredCompanyNames, value})
     }
 
-    handleSelect(full: string) {
-        const selectedCompany = this.state.companies.find(s => (s.full == full));
+    handleSelect(value: string) {
+        const selectedCompany = this.props.companies.find(s => (s.full == value));
         this.props.onChange(selectedCompany);
-        this.setState({value: full})
+        this.setState({value: value})
     }
 
-    async getCompanies(): Promise<Company[]> {
-        return await fetch(`${this.props.basedir}/../../service/companies`).then(resp => resp.json());
-    }
-
-    async componentDidMount() {
-        const companies = await this.getCompanies();
-        this.setState({companies});
+    componentDidMount() {
         if(this.props.initialShort) {
-            const company = this.state.companies.find(s => (s.short == this.props.initialShort));
+            const company = this.props.companies.find(s => (s.short == this.props.initialShort));
             if(company) {
                 this.setState({value: company.full});
                 this.props.onChange(company);
@@ -53,9 +46,9 @@ export class SelectCompany extends React.Component<SelectCompanyProps, SelectCom
     render() {
         return <div className="input-field">
             <AutoComplete
-                dataSource={this.state.data}
-                onSearch={(text) => this.handleSearch(text)}
-                onSelect={this.handleSelect.bind(this)}
+                dataSource={this.state.filteredCompanyNames}
+                onSearch={(value) => this.handleSearch(value)}
+                onSelect={(value: string) => this.handleSelect(value)}
                 value={this.state.value}
                 placeholder="Enter company"/>
         </div>
