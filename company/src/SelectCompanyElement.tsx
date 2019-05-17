@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import {SelectCompany} from "./SelectCompany";
+import {SelectCompany, Company} from "./SelectCompany";
 
 const scriptPath = document.currentScript.getAttribute("src");
 
@@ -12,7 +12,7 @@ class SelectCompanyElement extends HTMLElement {
         return ["initial-short"];
     }
 
-    public onChangeCompany: (string) => void;
+    public onChangeCompany: (Company) => void;
 
     readonly basedir: string;
 
@@ -25,8 +25,8 @@ class SelectCompanyElement extends HTMLElement {
     drawReactComponent() {
         ReactDOM.render(<SelectCompany initialShort={this.getAttribute("initial-short")}
                                        basedir={this.basedir}
-                                       onChange={(short: string) => {
-                                           this.onChangeCompany && this.onChangeCompany(short)
+                                       onChange={(company: Company) => {
+                                           this.onChangeCompany && this.onChangeCompany(company)
                                        }}/>, this);
     }
 

@@ -21,14 +21,14 @@
 
 <h1>Company</h1>
 <select-company initial-short="AAPL"></select-company>
-<div id="symbol"></div>
+<div id="company"></div>
 
 <script>
     (function () {
         var element = document.querySelector("select-company");
-        element.onChangeCompany = function (symbol) {
-            var symbolDiv = document.querySelector("div#symbol");
-            symbolDiv.innerHTML = "Symbol = " + symbol;
+        element.onChangeCompany = function (company) {
+            var companyDiv = document.querySelector("div#company");
+            companyDiv.innerHTML = "Company = " + company.full + " [" + company.short + "]";
         }
     })()
 </script>
