@@ -5,7 +5,7 @@
     <title>Company</title>
 
     <link rel="stylesheet" href="css/antd.css">
-<script type="text/javascript" src="static/js/selectCompanyElement.90b9439f.js"></script></head>
+<script type="text/javascript" src="static/js/selectCompanyElement.040f1ce0.js"></script></head>
 
 <style>
     body {
@@ -21,14 +21,14 @@
 
 <h1>Company</h1>
 <select-company initial-short="AAPL"></select-company>
-<div id="symbol"></div>
+<div id="company"></div>
 
 <script>
     (function () {
         var element = document.querySelector("select-company");
-        element.onChangeCompany = function (symbol) {
-            var symbolDiv = document.querySelector("div#symbol");
-            symbolDiv.innerHTML = "Symbol = " + symbol;
+        element.onChangeCompany = function (company) {
+            var companyDiv = document.querySelector("div#company");
+            companyDiv.innerHTML = "Company = " + company.full + " [" + company.short + "]";
         }
     })()
 </script>
