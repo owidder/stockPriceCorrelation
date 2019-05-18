@@ -14,19 +14,17 @@ class SelectCompanyElement extends HTMLElement {
         return ["initial-short"];
     }
 
-    private companies: Company[];
     public onChangeCompany: (Company) => void;
 
     drawReactComponent() {
         ReactDOM.render(<SelectCompany initialShort={this.getAttribute("initial-short")}
-                                       companies={this.companies}
+                                       basedir={basedir}
                                        onChange={(company: Company) => {
                                            this.onChangeCompany && this.onChangeCompany(company)
                                        }}/>, this);
     }
 
-    async connectedCallback() {
-        this.companies = await fetch(`${basedir}/../../service/companies`).then(resp => resp.json());
+    connectedCallback() {
         this.drawReactComponent();
     }
 

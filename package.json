@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
-    "build:all": "cd companyCorrelation && npm run build && cd ../company && npm run build"
+    "build:all": "cd companyCorrelation && npm run build && cd ../company && npm run build",
+    "build:dev:all": "cd companyCorrelation && npm run build:dev && cd ../company && npm run build:dev"
   },
   "repository": {
     "type": "git",
