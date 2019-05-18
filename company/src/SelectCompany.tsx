@@ -33,24 +33,13 @@ export class SelectCompany extends React.Component<SelectCompanyProps, SelectCom
         this.setState({value: value})
     }
 
-    initCompany() {
-        if(this.props.initialShort && this.props.companies) {
-            console.log(new Date())
+    componentDidMount() {
+        if(this.props.initialShort) {
             const company = this.props.companies.find(s => (s.short == this.props.initialShort));
             if(company) {
                 this.setState({value: company.full});
                 this.props.onChange(company);
             }
-        }
-    }
-
-    componentDidMount() {
-        this.initCompany();
-    }
-
-    componentDidUpdate(prevProps: Readonly<SelectCompanyProps>) {
-        if(prevProps.initialShort != this.props.initialShort || (this.props.companies && (prevProps.companies.length != this.props.companies.length))) {
-            this.initCompany();
         }
     }
 
