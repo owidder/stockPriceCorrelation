@@ -11,7 +11,7 @@ class CompanyCorrelationElement extends HTMLElement {
     readonly basedir: string;
 
     static get observedAttributes() {
-        return ["symbol-x", "symbol-y"];
+        return ["short-x", "short-y"];
     }
 
     constructor() {
@@ -23,14 +23,12 @@ class CompanyCorrelationElement extends HTMLElement {
     drawReactComponent() {
         ReactDOM.render(<CompanyCorrelation
             basedir={this.basedir}
-            symbolX={this.getAttribute("symbol-x")}
-            symbolY={this.getAttribute("symbol-y")}/>, this);
+            shortX={this.getAttribute("short-x")}
+            shortY={this.getAttribute("short-y")}/>, this);
     }
 
-    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+    attributeChangedCallback() {
         this.drawReactComponent();
-        if(newValue && oldValue != newValue) {
-        }
     }
 
     connectedCallback() {
