@@ -54,8 +54,8 @@ export class SelectCompany extends React.Component<SelectCompanyProps, SelectCom
         return <div className="input-field">
             <AutoComplete
                 dataSource={this.state.data}
-                onSearch={(text) => this.handleSearch(text)}
-                onSelect={this.handleSelect.bind(this)}
+                onSearch={(text: string) => this.handleSearch(text)}
+                onSelect={(value: string) => this.handleSelect(value)}
                 value={this.state.value}
                 placeholder="Enter company"/>
         </div>
