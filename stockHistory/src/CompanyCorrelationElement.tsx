@@ -5,24 +5,18 @@ import * as ReactDOM from "react-dom";
 import {CompanyCorrelation} from "./CompanyCorrelation";
 
 const scriptPath = document.currentScript.getAttribute("src");
+const parts = scriptPath.split("/");
+const basedir = parts.slice(0, parts.length-1).join("/");
 
 class CompanyCorrelationElement extends HTMLElement {
-
-    readonly basedir: string;
 
     static get observedAttributes() {
         return ["short-x", "short-y"];
     }
 
-    constructor() {
-        super();
-        const parts = scriptPath.split("/");
-        this.basedir = parts.slice(0, parts.length-1).join("/");
-    }
-
     drawReactComponent() {
         ReactDOM.render(<CompanyCorrelation
-            basedir={this.basedir}
+            basedir={basedir}
             shortX={this.getAttribute("short-x")}
             shortY={this.getAttribute("short-y")}/>, this);
     }
