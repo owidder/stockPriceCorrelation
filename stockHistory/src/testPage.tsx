@@ -7,4 +7,4 @@ const scriptPath = document.currentScript.getAttribute("src");
 const parts = scriptPath.split("/");
 const basedir = parts.slice(0, parts.length-1).join("/");
 
-ReactDOM.render(<CompanyCorrelation basedir={basedir} symbolX="AAPL" symbolY="FB"/>, document.getElementById("correlation"));
+ReactDOM.render(<CompanyCorrelation basedir={basedir} shortX="AAPL" shortY="FB"/>, document.getElementById("correlation"));

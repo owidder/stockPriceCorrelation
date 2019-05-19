@@ -69,13 +69,13 @@
         }
 
         function onChangeCompany1(company) {
-            document.getElementById("companyCorrelation").setAttribute("symbol-y", company.short);
+            document.getElementById("companyCorrelation").setAttribute("short-y", company.short);
             shortY = company.short;
             _set();
         }
 
         function onChangeCompany2(company) {
-            document.getElementById("companyCorrelation").setAttribute("symbol-x", company.short)
+            document.getElementById("companyCorrelation").setAttribute("short-x", company.short)
             shortX = company.short;
             _set();
         }

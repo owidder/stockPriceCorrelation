@@ -1,6 +1,6 @@
 const companyCorrelationElement: any = document.createElement("company-correlation");
-companyCorrelationElement.setAttribute("symbol-x", "FB");
-companyCorrelationElement.setAttribute("symbol-y", "AAPL");
+companyCorrelationElement.setAttribute("short-x", "FB");
+companyCorrelationElement.setAttribute("short-y", "AAPL");
 
 const containerElement = document.getElementById("container");
 containerElement.appendChild(companyCorrelationElement);
