@@ -85,4 +85,15 @@ const customElementsDist = {
     },
 }
 
-module.exports = [testPages, customElementsDist]
+const customElementsNoVersion = {
+    ...common,
+    entry: {
+        selectCompanyElement: "./src/SelectCompanyElement.tsx",
+    },
+    output: {
+        ...common.output,
+        filename: `dist/js/[name].js`,
+    },
+}
+
+module.exports = [testPages, customElementsDist, customElementsNoVersion]

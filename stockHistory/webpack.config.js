@@ -82,4 +82,15 @@ const customElementsDist = {
     },
 }
 
-module.exports = [testPage, customElementsDist]
+const customElementsNoVersion = {
+    ...common,
+    entry: {
+        companyCorrelationElement: "./src/CompanyCorrelationElement.tsx",
+    },
+    output: {
+        ...common.output,
+        filename: `dist/js/[name].js`,
+    },
+}
+
+module.exports = [testPage, customElementsDist, customElementsNoVersion]
